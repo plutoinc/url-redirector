@@ -4,6 +4,7 @@
   "description": "",
   "main": "",
   "dependencies": {
+    "qs": "^6.5.1",
     "serverless": "^1.26.1"
   },
   "devDependencies": {},

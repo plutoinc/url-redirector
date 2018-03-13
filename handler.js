@@ -1,4 +1,5 @@
 "use strict";
+const qs = require("qs");
 
 module.exports.redirect = (event, context, callback) => {
   const LAMBDA_SERVICE_NAME = "pluto-redirector";
@@ -9,6 +10,11 @@ module.exports.redirect = (event, context, callback) => {
     requestPath = "/";
   } else {
     requestPath = path.replace(`/${LAMBDA_SERVICE_NAME}`, "");
+  }
+
+  const queryStringParameters = event.queryStringParameters;
+  if (queryStringParameters) {
+    requestPath = `${requestPath}${qs.stringify(queryStringParameters, { addQueryPrefix: true })}`;
   }
 
   const response = {

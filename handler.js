@@ -2,11 +2,12 @@
 
 module.exports.redirect = (event, context, callback) => {
   const response = {
-    status: "301",
+    statusCode: 301,
     headers: {
       Location: "https://search.pluto.network",
     },
+    body: "https://search.pluto.network",
   };
 
-  callback(null, response);
+  context.succeed(response);
 };

@@ -19,6 +19,6 @@ functions:
 
 resources:
   Resources:
-    RenderLogGroup:
+    RedirectLogGroup:
       Properties:
         RetentionInDays: "10"

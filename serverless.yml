@@ -21,4 +21,4 @@ resources:
   Resources:
     RedirectLogGroup:
       Properties:
-        RetentionInDays: "10"
+        RetentionInDays: "1"

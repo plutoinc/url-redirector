@@ -1,0 +1,24 @@
+{
+  "name": "url-redirector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "dependencies": {
+    "serverless": "^1.26.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy:stage": "sls deploy -s stage -v",
+    "deploy:prod": "sls deploy -s prod -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pluto-net/url-redirector.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pluto-net/url-redirector/issues"
+  },
+  "homepage": "https://github.com/pluto-net/url-redirector#readme"
+}

@@ -22,3 +22,41 @@ resources:
     RedirectLogGroup:
       Properties:
         RetentionInDays: "1"
+
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          ViewerCertificate:
+            AcmCertificateArn: arn:aws:acm:us-east-1:966390130392:certificate/db902af7-a1ee-40ab-8145-9bd8b786ba39
+            SslSupportMethod: sni-only
+          DefaultRootObject: ''
+          Enabled: true
+          DefaultCacheBehavior:
+            DefaultTTL: 300
+            MaxTTL: 300
+            MinTTL: 300
+            AllowedMethods:
+              - GET
+              - HEAD
+            CachedMethods:
+              - HEAD
+              - GET
+            ForwardedValues:
+              QueryString: true
+              Headers:
+                - original-uri
+                - User-Agent
+                - X-Forwarded-For
+            TargetOriginId: "${self:service}-${opt:stage}-api-gateway"
+            ViewerProtocolPolicy: redirect-to-https
+          Aliases:
+            - poc.pluto.network
+          Origins:
+          - CustomOriginConfig:
+              HTTPSPort: 443
+              OriginProtocolPolicy: https-only
+            DomainName:
+              "Fn::Join": ["", [{"Ref": "ApiGatewayRestApi"}, ".execute-api.${self:provider.region}.amazonaws.com"]]
+            Id: "${self:service}-${opt:stage}-api-gateway"
+            OriginPath: /${opt:stage}/${self:service}

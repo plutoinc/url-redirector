@@ -20,9 +20,9 @@ module.exports.redirect = (event, context, callback) => {
   const response = {
     statusCode: 301,
     headers: {
-      Location: `https://search.pluto.network${requestPath}`,
+      Location: `https://scinapse.io${requestPath}`,
     },
-    body: `https://search.pluto.network${requestPath}`,
+    body: `https://scinapse.io${requestPath}`,
   };
 
   context.succeed(response);
